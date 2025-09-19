@@ -1,0 +1,32 @@
+.DS_Store
+.idea/
+*.iml
+/_ReSharper.Caches/
+
+# VS / .NET
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+[Ll]ogs/
+[Tt]estResults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Packages
+/packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Docker
+docker-compose.override.yml
+
+# Outros
+*.log
