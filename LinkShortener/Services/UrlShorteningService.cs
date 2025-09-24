@@ -1,23 +1,39 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace LinkShortener.Services;
 
 public class UrlShorteningService
 {
-    private const int NumberOfCharacters = 5;
+    public const int NumberOfCharacters = 5;
     private const string Alphabet = "abcdefghijklmnopqrstuvwxyz";
     
     private readonly Random _random = new Random();
+    private readonly ApplicationDbContext _dbContext;
 
-    public string GenerateUniqueCode()
+    public UrlShorteningService(ApplicationDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    public async Task<string> GenerateUniqueCode()
     {
         var codeChars = new char[NumberOfCharacters];
 
-        for (var i = 0; i < NumberOfCharacters; i++)
+        while (true)
         {
-            var randomIndex = _random.Next(Alphabet.Length - 1);
+            for (var i = 0; i < NumberOfCharacters; i++)
+            {
+                var randomIndex = _random.Next(Alphabet.Length);
             
-            codeChars[i] = Alphabet[randomIndex];
+                codeChars[i] = Alphabet[randomIndex];
+            }
+
+            var code = new string(codeChars);
+
+            if (!await _dbContext.ShortenedUrls.AnyAsync(s => s.Code == code))
+            {
+                return code;
+            }
         }
-        
-        return new string(codeChars);
     }
 }
