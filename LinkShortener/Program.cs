@@ -1,5 +1,6 @@
 using LinkShortener;
 using LinkShortener.Entities;
+using LinkShortener.Extensions;
 using LinkShortener.Models;
 using LinkShortener.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
-    o.UseSqlServer(builder.Configuration.GetConnectionString("database")));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
 builder.Services.AddScoped<UrlShorteningService>();
 
@@ -20,6 +21,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    app.ApplyMigrations();
 }
 
 app.MapPost("api/shorten", async (
