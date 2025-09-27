@@ -4,12 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-    }
-    
     public DbSet<ShortenedUrl> ShortenedUrls { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
