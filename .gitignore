@@ -2,6 +2,7 @@
 .idea/
 *.iml
 /_ReSharper.Caches/
+*/.env
 
 # VS / .NET
 bin/

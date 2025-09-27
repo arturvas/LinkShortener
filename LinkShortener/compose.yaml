@@ -1,0 +1,29 @@
+name: ls
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - dbdata:/var/opt/mssql
+    
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      ConnectionStrings__Database: "Server=sqlserver,1433;Database=${MSSQL_SA_NAME};User ID=sa;Password=${MSSQL_SA_PASSWORD};Encrypt=false"
+      ASPNETCORE_URLS: "http://+:8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+        
+volumes:
+  dbdata:
+    name: mssql-data
