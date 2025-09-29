@@ -1,7 +1,0 @@
-﻿services:
-  linkshortener:
-    image: linkshortener
-    build:
-      context: .
-      dockerfile: LinkShortener/Dockerfile
-
