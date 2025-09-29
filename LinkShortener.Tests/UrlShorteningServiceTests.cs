@@ -1,4 +1,5 @@
-using LinkShortener.Services;
+using LinkShortener.API;
+using LinkShortener.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener.Tests;

@@ -1,8 +1,8 @@
-using LinkShortener;
-using LinkShortener.Entities;
-using LinkShortener.Extensions;
-using LinkShortener.Models;
-using LinkShortener.Services;
+using LinkShortener.API;
+using LinkShortener.API.Entities;
+using LinkShortener.API.Extensions;
+using LinkShortener.API.Models;
+using LinkShortener.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

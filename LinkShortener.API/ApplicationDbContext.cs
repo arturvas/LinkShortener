@@ -1,8 +1,8 @@
-using LinkShortener.Entities;
-using LinkShortener.Services;
+using LinkShortener.API.Entities;
+using LinkShortener.API.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace LinkShortener;
+namespace LinkShortener.API;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {

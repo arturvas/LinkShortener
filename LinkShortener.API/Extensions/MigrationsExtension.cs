@@ -1,7 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace LinkShortener.Extensions;
+namespace LinkShortener.API.Extensions;
 
 public static class MigrationsExtension
 {

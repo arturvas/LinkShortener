@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LinkShortener.Services;
+namespace LinkShortener.API.Services;
 
 public class UrlShorteningService
 {

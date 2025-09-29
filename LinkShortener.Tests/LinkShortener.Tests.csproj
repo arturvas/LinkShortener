@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\LinkShortener\LinkShortener.csproj"/>
+        <ProjectReference Include="..\LinkShortener.API\LinkShortener.API.csproj" />
     </ItemGroup>
 
 </Project>
