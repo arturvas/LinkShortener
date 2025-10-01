@@ -20,25 +20,25 @@ services:
       retries: 5
       start_period: 30s
     
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: linkshortener-api
-    environment:
-      ConnectionStrings__Database: "Server=sqlserver,1433;Database=${MSSQL_DB};User ID=sa;Password=${MSSQL_SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;"
-      ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: "http://+:8080"
-    ports:
-      - "8080:8080"
-    depends_on:
-      sqlserver:
-        condition: service_healthy
-    volumes:
-      - ./:/app
-    working_dir: /app
-    command: dotnet watch run
-  
+#  api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: linkshortener-api
+#    environment:
+#      ConnectionStrings__Database: "Server=sqlserver,1433;Database=${MSSQL_DB};User ID=sa;Password=${MSSQL_SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;"
+#      ASPNETCORE_ENVIRONMENT: Development
+#      ASPNETCORE_URLS: "http://+:8080"
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      sqlserver:
+#        condition: service_healthy
+#    volumes:
+#      - ./:/app
+#    working_dir: /app
+#    command: dotnet watch run
+#  
 volumes:
   dbdata:
     name: mssql-data
