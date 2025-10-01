@@ -40,7 +40,7 @@ app.MapPost("api/shorten", async (
     
     var code = await service.GenerateUniqueCode();
 
-    var shortenUrl = new ShortenedUrl
+    var shortenedUrl = new ShortenedUrl
     {
         Id = Guid.NewGuid(),
         LongUrl = request.Url,
@@ -49,11 +49,11 @@ app.MapPost("api/shorten", async (
         CreatedAt = DateTimeOffset.UtcNow
     };
     
-    dbContext.ShortenedUrls.Add(shortenUrl);
+    dbContext.ShortenedUrls.Add(shortenedUrl);
     
     await dbContext.SaveChangesAsync();
     
-    return Results.Ok(shortenUrl.ShortUrl);
+    return Results.Ok(shortenedUrl.ShortUrl);
 });
 
 app.UseHttpsRedirection();
