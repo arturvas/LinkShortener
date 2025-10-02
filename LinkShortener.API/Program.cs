@@ -64,6 +64,8 @@ app.MapGet("api/{code}", async (string code, ApplicationDbContext dbContext) =>
     }
 );
 
+app.MapGet("api/links", (ApplicationDbContext dbContext) => dbContext.ShortenedUrls.ToList());
+
 app.UseHttpsRedirection();
 
 app.Run();
