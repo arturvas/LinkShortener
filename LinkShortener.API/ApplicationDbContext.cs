@@ -12,8 +12,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         modelBuilder.Entity<ShortenedUrl>(builder =>
         {
-            builder.Property(s => s.Code).HasMaxLength(UrlShorteningService.NumberOfCharacters);
-            builder.HasIndex(s => s.Code).IsUnique();
+            builder
+                .Property(shortenedUrl => shortenedUrl.Code)
+                .HasMaxLength(UrlShorteningService.NumberOfCharacters);
+            builder
+                .HasIndex(shortenedUrl => shortenedUrl.Code)
+                .IsUnique();
         });
     }
 }
